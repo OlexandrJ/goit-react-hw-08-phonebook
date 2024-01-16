@@ -37,7 +37,7 @@ const Navigation = () => {
         {user ? (
           <h1>Welcome '{user.name}' your contacts</h1>
         ) : (
-          <h1>Welcome guest please login </h1>
+          <h1>Welcome guest please login</h1>
         )}
       </Container>
     </>

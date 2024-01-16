@@ -2,7 +2,6 @@ import ContactForm from '../components/ContactForm/ContactForm';
 import css from '../components/App.css';
 import Filter from '../components/Filter/Filter';
 import ContactList from '../components/ContactList/ContactList';
-
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContactsThunk } from '../redux/contactsThunk';

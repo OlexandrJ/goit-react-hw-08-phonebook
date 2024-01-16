@@ -16,7 +16,16 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div
+      style={{
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingLeft: '50px',
+        fontSize: 20,
+        color: '#010101',
+      }}>
       <Navigation />
       <Routes>
         <Route path="/" element={<PublicRoute />}>
@@ -27,7 +36,7 @@ export const App = () => {
           <Route path="/contacts" element={<Contacts />} />
         </Route>
       </Routes>
-    </>
+    </div>
   );
 };
 

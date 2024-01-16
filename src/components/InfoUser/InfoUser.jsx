@@ -14,7 +14,7 @@ const InfoUser = () => {
       {user && (
         <div className=" d-flex gap=10">
           <Button
-            bg="black"
+            bg="blue"
             variant="dark"
             className="d-flex "
             onClick={handleSubmit}
