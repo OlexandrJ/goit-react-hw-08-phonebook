@@ -5,7 +5,7 @@ import {
   signUpThunk,
 } from './userThunk';
 
-const { createSlice } = require('@reduxjs/toolkit');
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   user: null,
@@ -23,6 +23,13 @@ const handleIfReject = (state, { payload }) => {
   state.error = payload;
 };
 
+const handleIfFulfilled = (state, { payload }) => {
+  state.user = payload.user;
+  state.token = payload.token;
+  state.isLoading = false;
+  state.error = null;
+};
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -30,20 +37,10 @@ const authSlice = createSlice({
     builder
       .addCase(signUpThunk.pending, handleIfPending)
       .addCase(signUpThunk.rejected, handleIfReject)
-      .addCase(signUpThunk.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-        state.token = payload.token;
-        state.isLoading = false;
-        state.error = null;
-      })
+      .addCase(signUpThunk.fulfilled, handleIfFulfilled)
       .addCase(loginThunk.pending, handleIfPending)
       .addCase(loginThunk.rejected, handleIfReject)
-      .addCase(loginThunk.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-        state.token = payload.token;
-        state.isLoading = false;
-        state.error = null;
-      })
+      .addCase(loginThunk.fulfilled, handleIfFulfilled)
       .addCase(logoutThunk.pending, handleIfPending)
       .addCase(logoutThunk.rejected, handleIfReject)
       .addCase(logoutThunk.fulfilled, () => {
